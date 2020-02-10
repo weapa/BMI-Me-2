@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/btnclose"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/ic_close_black_24dp"

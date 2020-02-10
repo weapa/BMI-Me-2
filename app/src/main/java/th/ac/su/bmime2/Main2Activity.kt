@@ -1,5 +1,6 @@
 package th.ac.su.bmime2
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,9 +17,11 @@ class Main2Activity : AppCompatActivity() {
         val weight = intent.getDoubleExtra("weight", -1.0)
 
         var bminum = findViewById<TextView>(R.id.bminum)
-
+        var btnclose = findViewById<TextView>(R.id.btnclose)
         var bmiis = findViewById<TextView>(R.id.bmiis)
         var heiwei = findViewById<TextView>(R.id.heiwei)
+
+
         var heightforbmi: Double = 0.0
         var result: Double = 0.0
 
@@ -54,6 +57,14 @@ class Main2Activity : AppCompatActivity() {
             intent.type = "text/plan"
 
             startActivity(Intent.createChooser(intent, "share info"))
+        }
+        btnclose.setOnClickListener {
+
+            var intent = Intent()
+            intent.putExtra("rate", bminum.text.toString().toDouble())
+
+            setResult(Activity.RESULT_OK,intent)
+            finish()
         }
     }
 }
