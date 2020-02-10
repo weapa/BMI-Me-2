@@ -7,6 +7,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 
+
+fun Double.round(decimals: Int): Double {
+    var multiplier = 1.0
+    repeat(decimals) { multiplier *= 10 }
+    return kotlin.math.round(this * multiplier) / multiplier
+}
+
 class Main2Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +35,8 @@ class Main2Activity : AppCompatActivity() {
         heightforbmi = height / 100
         result = weight / (heightforbmi * heightforbmi)
 
-        bminum.setText(result.toString())
+        bminum.setText(result.round(2).toString())
+
 
         if (result < 18.50) {
             bmiis.setText("(Underweight)")
